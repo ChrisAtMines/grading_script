@@ -1,7 +1,7 @@
 # Roster-Cloner
 Allows for cloning assignments of roster via a JSON file
 
-#Instructions
+# Instructions
 
 Install the CLI `jq` for your distribution, example for Debian based
 
