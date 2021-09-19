@@ -49,7 +49,9 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
     let _ = list_check Hw02.tree_tests_post in
     let _ = list_check Hw02.simple_sum_tests in
     let _ = list_check Hw02.sum_tests in
-    let _ = list_check Hw02.instr_tests in
+    let _ = list_check Hw02.instr_traverse2_pre_tests in
+    let _ = list_check Hw02.instr_traverse2_post_tests in
+    let _ = list_check Hw02.instr_sum_tests in
     get_test_counts acc
   ) (0,0) !Flags.mode) in
   let _ = Printf.printf "total = %d; failed = %d\n" total failed in

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+NC='\033[0m'
+
 ASSIGNMENT=$1
 if [ -z "$2" ]
 then
@@ -19,6 +22,7 @@ do
 	STUDENT_NAME_FIRST=$(jq -r .[$i].name_first $ROSTER)
 	STUDENT_NAME_LAST=$(jq -r .[$i].name_last $ROSTER)
 	STUDENT_NAME=${STUDENT_NAME_FIRST// /_}_${STUDENT_NAME_LAST}
+	echo -e "Student: ${RED}$STUDENT_NAME${NC}"
 	cd sec_$SECTION
 	cd $STUDENT_NAME
 	if [[  -f $ASSIGNMENT.ml ]]
@@ -46,11 +50,11 @@ do
 		cp old_$ASSIGNMENT.ml $ASSIGNMENT.ml
 		rm old_$ASSIGNMENT.ml
 	else
-		echo "No Submission"
+		echo -e "${RED}No Submission${NC}"
 	fi
 	cd ..
 	cd ..
-	echo "Student: $STUDENT_NAME"
+	echo -e "${RED}Student: $STUDENT_NAME${NC}"
 	read -n 1 -p "Press any key to Continue"
 	echo
 done
