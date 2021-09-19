@@ -1,0 +1,3 @@
+[
+{ "section":"a", "assignments": ["lab.*", "hw.*"], "github_login": "johndoe123", "name_first": "John", "name_last": "Doe", "name_suffix": "", "teams": [], "type": "student", "univ_email": "johndoe@uni.edu", "univ_id": "12345678", "univ_username": "johndoe" },
+]
