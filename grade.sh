@@ -3,12 +3,19 @@
 RED='\033[0;31m'
 NC='\033[0m'
 
+SECTION_SKIP=false
+
 ASSIGNMENT=$1
 if [ -z "$2" ]
 then
 	RSCDIR=grader_files
 else
 	RSCDIR=$2
+fi
+
+if [[ $* == *-s* ]]
+then
+	SECTION_SKIP=true	
 fi
 
 ROSTER=$RSCDIR/roster.json
@@ -19,6 +26,10 @@ NUM_STUDENTS=$(jq length $ROSTER)
 for (( i=0; i<$NUM_STUDENTS; i++ ))
 do
 	SECTION=$(jq -r .[$i].section $ROSTER)
+	if [ $SECTION_SKIP ] && [ "$SECTION" = "a" ]
+	then
+		continue
+	fi
 	STUDENT_NAME_FIRST=$(jq -r .[$i].name_first $ROSTER)
 	STUDENT_NAME_LAST=$(jq -r .[$i].name_last $ROSTER)
 	STUDENT_NAME=${STUDENT_NAME_FIRST// /_}_${STUDENT_NAME_LAST}

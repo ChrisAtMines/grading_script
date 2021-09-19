@@ -26,3 +26,5 @@ instr_tests.ml should contain any new test sets.
 new_main.ml should be a copy of main with the names of all new test sets inserted.
 
 the tool will clean build each project, append the new tests to the end of <Assignment>.ml, replace main, build and run the project, and revert the changes.
+
+Now you can skip section with `-s` flag added to the end of the bash command.
