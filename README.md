@@ -15,9 +15,9 @@ More instructions at https://stedolan.github.io/jq/download/
 
 Run on the cmd line: 
 
-'''bash
+```bash
 ./test.sh <Assignment> <file_directory>
-'''
+```
 
 <file_directory> should contain a roster.json and an <Assignment> directory with an instr_tests.ml and a new_main.ml
 
