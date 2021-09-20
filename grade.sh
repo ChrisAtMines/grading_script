@@ -4,6 +4,8 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 SECTION_SKIP=false
+DUE_DATE_UNIX=$(date -d 2021-09-17 +%s)
+DUE_DATE=$(date -d 2021-09-17)
 
 ASSIGNMENT=$1
 if [ -z "$2" ]
@@ -32,7 +34,7 @@ do
 	fi
 	STUDENT_NAME_FIRST=$(jq -r .[$i].name_first $ROSTER)
 	STUDENT_NAME_LAST=$(jq -r .[$i].name_last $ROSTER)
-	STUDENT_NAME=${STUDENT_NAME_FIRST// /_}_${STUDENT_NAME_LAST}
+	STUDENT_NAME=${STUDENT_NAME_FIRST// /_}_${STUDENT_NAME_LAST// /_}
 	echo -e "Student: ${RED}$STUDENT_NAME${NC}"
 	cd sec_$SECTION
 	cd $STUDENT_NAME
@@ -63,9 +65,17 @@ do
 	else
 		echo -e "${RED}No Submission${NC}"
 	fi
-	cd ..
-	cd ..
+	
+	TURN_IN_DATE=$(git log -1 --date=unix --format=%cd)
 	echo -e "${RED}Student: $STUDENT_NAME${NC}"
+	if [[ "$TURN_IN_DATE" > "$DUE_DATE_UNIX" ]]
+	then
+		DAYS_LATE=$(( ($TURN_IN_DATE - $DUE_DATE_UNIX)/86400 + 1))
+		echo -e "${RED}Date of commit: $(git log -1 --format=%cd)\nDue:            $DUE_DATE${NC}"
+		echo -e "${RED}Days Late: $DAYS_LATE${NC}"
+	fi
+	cd ../..
+
 	read -n 1 -p "Press any key to Continue"
 	echo
 done
