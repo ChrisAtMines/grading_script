@@ -28,7 +28,7 @@ NUM_STUDENTS=$(jq length $ROSTER)
 for (( i=0; i<$NUM_STUDENTS; i++ ))
 do
 	SECTION=$(jq -r .[$i].section $ROSTER)
-	if [ $SECTION_SKIP ] && [ "$SECTION" = "a" ]
+	if [ $SECTION_SKIP != false ] && [ "$SECTION" = "a" ]
 	then
 		continue
 	fi
