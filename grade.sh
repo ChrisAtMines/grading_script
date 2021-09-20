@@ -5,7 +5,7 @@ NC='\033[0m'
 
 SECTION_SKIP=false
 DUE_DATE_UNIX=$(date -d 2021-09-17 +%s)
-DUE_DATE=$(date -d 2021-09-17)
+DUE_DATE=$(date -d 2021-09-17 +"%a %b %d %H:%R")
 
 ASSIGNMENT=$1
 if [ -z "$2" ]
