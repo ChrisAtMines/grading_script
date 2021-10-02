@@ -35,7 +35,7 @@ let instr_map_tests = ("Instructor Map Tests", map, (=), eq_exn, Some((fun (_,l)
 (* Fold Left-right tests *)
 
 let instr_fold_left_tests = ("Fold Left", fold_left, (=), eq_exn, Some((fun (_,s,l) -> Printf.sprintf "(f,%s,%s)" s (str_int_list l)),(fun x -> x)), [
-  Some("Instructor Test x"), ((fun (acc, x) -> (acc^(string_of_int x))),"",[1;2;3;4;5], Ok("12345"));
+  (Some("Instructor Test x"), ((fun (acc, x) -> (acc^(string_of_int x))),"",[1;2;3;4;5]), Ok("12345"));
 
 ])
 
@@ -44,7 +44,7 @@ let instr_fold_left_int_tests = ("Fold Left", fold_left, (=), eq_exn, Some((fun 
 ])
 
 let instr_fold_right_tests = ("Fold Right", fold_right, (=), eq_exn, Some((fun (_,l,s) -> Printf.sprintf "(f,%s,%s)" (str_int_list l) s),(fun x -> x)), [
-  Some("Instructor Test x"), ((fun (acc, x) -> (acc^(string_of_int x))),"",[1;2;3;4;5], Ok("12345"))
+  (Some("Instructor Test x"), ((fun  (x, acc) -> (acc^(string_of_int x))),[1;2;3;4;5], ""), Ok("54321"));
 ])
 
 let instr_filter_tests = ("Filter", filter, (=), eq_exn, Some((fun (_,l) -> str_int_list l),str_int_list), [
@@ -58,7 +58,7 @@ let instr_filter_tests = ("Filter", filter, (=), eq_exn, Some((fun (_,l) -> str_
 let printer = Some((fun (t,d,s) -> Printf.sprintf "(%s,%d,%s)" (str_binary_tree t) d (str_binary_tree s)),str_binary_tree)
 
 let instr_replace_tests = ("Replace", (replace : (binary_tree * int * binary_tree) -> binary_tree), ((=) : binary_tree -> binary_tree -> bool), eq_exn, printer, [
-  Some("Test X"), (Node(Empty, 100, Empty), 100, make_leaf 200), Ok(Node(Empty,200,Empty)));
+  Some("Test X"), (Node(Empty, 100, Empty), 100, make_leaf 200), Ok(Node(Empty,200,Empty));
 
 ])
 
