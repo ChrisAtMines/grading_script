@@ -4,8 +4,8 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 SECTION_SKIP=false
-DUE_DATE_UNIX=$(date -d 2021-09-24 +%s)
-DUE_DATE=$(date -d 2021-09-24 +"%a %b %d %H:%R")
+DUE_DATE_UNIX=$(date -d 2021-09-25 +%s)
+DUE_DATE=$(date -d 2021-09-25 +"%a %b %d %H:%R")
 
 ASSIGNMENT=$1
 if [ -z "$2" ]
