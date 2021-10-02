@@ -28,3 +28,13 @@ new_main.ml should be a copy of main with the names of all new test sets inserte
 the tool will clean build each project, append the new tests to the end of <Assignment>.ml, replace main, build and run the project, and revert the changes.
 
 Now you can skip section with `-s` flag added to the end of the bash command.
+
+```bash
+./clone-all.sh <assignment>
+```
+
+use -p with clone-all.sh to pull the assignment from repos
+
+-s "a" to only get results from section "a"
+
+-r </path/roster.json> optional, use if not in same directory as script 
