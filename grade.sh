@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 SECTION_SKIP=false
-DUE_DATE_UNIX=$(date -d 2021-09-17 +%s)
+DUE_DATE_UNIX=$(date -d 2021-09-24 +%s)
 DUE_DATE=$(date -d 2021-09-17 +"%a %b %d %H:%R")
 
 ASSIGNMENT=$1
@@ -38,6 +38,7 @@ do
 	echo -e "Student: ${RED}$STUDENT_NAME${NC}"
 	cd sec_$SECTION
 	cd $STUDENT_NAME
+	cd $ASSIGNMENT
 	if [[  -f $ASSIGNMENT.ml ]]
 	then
 		echo
@@ -46,11 +47,11 @@ do
 		echo "Replacing Main.ml"
 		cp main.ml old_main.ml
 		rm main.ml
-		cp ../../$RSCDIR/$ASSIGNMENT/new_main.ml main.ml
+		cp ../../../$RSCDIR/$ASSIGNMENT/new_main.ml main.ml
 
 		echo "Appending Instructor Tests"
 		cp $ASSIGNMENT.ml old_$ASSIGNMENT.ml
-		cat ../../$RSCDIR/$ASSIGNMENT/instr_tests.ml >> $ASSIGNMENT.ml
+		cat ../../../$RSCDIR/$ASSIGNMENT/instr_tests.ml >> $ASSIGNMENT.ml
 		make $ASSIGNMENT
 
 		echo "Restoring Original main.ml"
@@ -74,7 +75,7 @@ do
 		echo -e "${RED}Date of commit: $(git log -1 --format=%cd)\nDue:            $DUE_DATE${NC}"
 		echo -e "${RED}Days Late: $DAYS_LATE${NC}"
 	fi
-	cd ../..
+	cd ../../..
 
 	read -n 1 -p "Press any key to Continue"
 	echo
