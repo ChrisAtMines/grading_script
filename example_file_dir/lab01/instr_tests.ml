@@ -77,7 +77,7 @@ let b_tree5 = Node( Node(Empty,13,Empty), 14, Node(Empty, 15, Empty))
 let b_tree6 = Node( b_tree4, 12, b_tree5 )
 
 let b_tree = Node( b_tree3, 8, b_tree6 )
-let not_b_tree = Node( b_tree3, 8, Node(b_tree5, 12, b_tree4))
+let not_b_tree = Node( b_tree3, 8, Node(b_tree4, 12, make_leaf 12))
 
 let printer = Some((fun (t,d,s) -> Printf.sprintf "(%s,%d,%s)" (str_binary_tree t) d (str_binary_tree s)),str_binary_tree)
 
