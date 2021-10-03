@@ -90,13 +90,15 @@ let instr_replace_tests = ("Replace", (replace : (binary_tree * int * binary_tre
 let instr_get_max_tests = ("Get Max", (get_max : binary_tree -> data option), ((=) : data option -> data option -> bool), eq_exn, Some(str_binary_tree,str_option string_of_int), [
   (Some("simple tree"), Node(Empty,10,Node(Node(Empty,30,Empty),20,Empty)), Ok(Some(30)));
   (Some("max 2"), b_tree, Ok(Some(15)));
-  (Some("max none"), Empty, Ok(None));
+  (Some("max none"), Empty, Ok(None)); 
+  (Some("max of int.min"), make_leaf Int.min_int, Ok(Some(-4611686018427387904)));
 ])
 
 let instr_get_min_tests = ("Get Min", (get_min : binary_tree -> data option), ((=) : data option -> data option -> bool), eq_exn, Some(str_binary_tree,str_option string_of_int), [
   (Some("simple tree"), Node(Empty,10,Node(Node(Empty,30,Empty),20,Empty)), Ok(Some(10)));
   (Some("max 2"), b_tree, Ok(Some(1)));
-  (Some("min none"), Empty, Ok(None));
+  (Some("min none"), Empty, Ok(None));  
+  (Some("min of Int.max"), make_leaf Int.max_int, Ok(Some(4611686018427387903)));
 ])
 
 let instr_is_bst_tests = ("Is BST", is_bst, (=), eq_exn, Some(str_binary_tree,str_bool), [
