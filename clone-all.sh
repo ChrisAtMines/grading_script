@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ASSIGNMENT=${@: -1}
-
+PULL=false
 while getopts 'r:s:' flag; do
     case "${flag}" in
         r) ROSTER=${OPTARG} ;;
@@ -9,6 +9,10 @@ while getopts 'r:s:' flag; do
         p) PULL=true ;;
     esac
 done
+
+echo "r: $ROSTER"
+echo "s: $SECTION_ARG"
+echo "p: $PULL"
 
 if [ -z "$ROSTER" ]
 then
@@ -47,8 +51,9 @@ do
     GIT_URL="https://github.com/mines-csci400/f21${SECTION}-user-${GIT_REPO_USER}-${ASSIGNMENT}"
     CLONE_DIR="sec_$SECTION/${STUDENT_NAME}/${ASSIGNMENT}"
     echo "Grabbing $STUDENT_NAME_FIRST $STUDENT_NAME_LAST"
-    if [ PULL ]
+    if  $PULL
     then
+	echo "pulling bc im broken :("
         cd $CLONE_DIR
         git pull 
         cd ../../..
