@@ -2,7 +2,7 @@
 
 ASSIGNMENT=${@: -1}
 
-while getopts 'r:s:' flag; do
+while getopts 'r:s:p' flag; do
     case "${flag}" in
         r) ROSTER=${OPTARG} ;;
         s) SECTION_ARG=${OPTARG} ;;
@@ -47,9 +47,10 @@ do
     GIT_URL="https://github.com/mines-csci400/f21${SECTION}-user-${GIT_REPO_USER}-${ASSIGNMENT}"
     CLONE_DIR="sec_$SECTION/${STUDENT_NAME}/${ASSIGNMENT}"
     echo "Grabbing $STUDENT_NAME_FIRST $STUDENT_NAME_LAST"
-    if [ PULL ]
+    if [ "$PULL" = true ]
     then
         cd $CLONE_DIR
+        echo pulling
         git pull 
         cd ../../..
     else
