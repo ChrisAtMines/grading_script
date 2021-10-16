@@ -32,6 +32,27 @@ let vale = fun v -> ValExpr(NoPos, v)
 let bope = fun (e1, b, e2) -> BopExpr(NoPos, e1, b, e2)
 let uope = fun (u, e) -> UopExpr(NoPos, u, e)
 
+(* load in a good version of the lexer for parser_tests *)
+let rec lexer = fun stream -> match stream with
+| [] -> []
+| 't'::'r'::'u'::'e'::more -> KeywordToken("true")::(lexer more)
+| 'f'::'a'::'l'::'s'::'e'::more->KeywordToken("false")::(lexer more)
+| '-'::more -> OpToken("-")::(lexer more)
+| '!'::more -> OpToken("!")::(lexer more)
+| '*'::more -> OpToken("*")::(lexer more)
+| '/'::more -> OpToken("/")::(lexer more)
+| '|'::'|'::more -> OpToken("||")::(lexer more)
+| '&'::'&'::more -> OpToken("&&")::(lexer more)
+| '+'::more -> OpToken("+")::(lexer more)
+| ' '::more -> (lexer more)
+| '\t'::more -> (lexer more)
+| '\r'::more -> (lexer more)
+| '\n'::more -> (lexer more)
+| '"'::more ->
+  let (x,y) = extract (more,fun x -> x<>'"') in
+  StrToken(char_list_to_string x)::(match y with [] -> [] | _::more -> lexer more)
+| _ -> let (x,y) = extract (stream, fun x -> is_digit(x) || x == '.') in NumToken(char_list_to_string x)::(lexer y)
+
 
 let printer = Some(str_token_list,(fun (eo,l) -> Printf.sprintf "%s; %s" (str_option str_expr eo) (str_token_list l)))
 let instr_parser_tests = ("Instr Parser Tests", parser, ((=) : (expr_t option * token list) -> (expr_t option * token list) -> bool), eq_exn, printer, [
