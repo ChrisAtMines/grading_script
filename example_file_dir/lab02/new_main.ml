@@ -47,7 +47,7 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
     let _ = list_check Lab02.eval_tests in
     let _ = list_check Lab02.typecheck_tests in
     let _ = list_check Lab02.instr_eval_tests in
-    let _ = list_check Lab02.instr_eval_tests in
+    let _ = list_check Lab02.instr_typecheck_tests in
     get_test_counts acc
   ) (0,0) !Flags.mode) in
   let _ = Printf.printf "total = %d; failed = %d\n" total failed in
