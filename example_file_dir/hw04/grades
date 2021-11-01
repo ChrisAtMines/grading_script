@@ -1,0 +1,655 @@
+*****************
+SEC A
+*****************
+
+______________________________
+Dillon Anderson
+T2:T3: Perfect
+
+______________________________
+Daniel Ayers
+T2:T3: Perfect
+
+______________________________
+Lauren Baker
+T2:T3: Perfect
+
+______________________________
+Chrstopher Blaylock
+- No submission
+______________________________
+Laura Broderick
+T2:T3: Perfect
+
+______________________________
+Dakota Brown
+- No submission
+______________________________
+Thomas Bullock
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+- 1 Day late
+______________________________
+Margaret Cayce
+T2:T3: Perfect
+______________________________
+James Cherry
+- No submission
+______________________________
+Tamara Cousineau
+T2:T3: 
+- These properties don't follow transitive property, P(k+1) != P(k) + P(1)
+-10
+______________________________
+Michael Crews
+T2:T3: Perfect
+______________________________
+William Culver
+T2:T3: Perfect
+______________________________
+Justin Davis
+T2:T3
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+- Strong inductive step is incorrect
+-25
+______________________________
+Andrew Depke
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+Michael Devries
+- No submission
+
+______________________________
+Ankit Dhingra
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+Trent Douglas
+T2:T3: Perfect
+______________________________
+Dylan Eck
+T2:T3: Perfect
+______________________________
+Caleb Edwards
+T2: Perfect
+T3: 
+- No inductive step
+-20
+______________________________
+Kenneth Fernandez
+T2: 
+T3: 
+- Task 2 base case incorrect
+- Task 3 induction step incorrect, need to induct on the property P(k) true for 0 < k < n to prove P(n)
+-20
+______________________________
+Fisher Fugler
+T2: Perfect
+T3: 
+- No work for task 3
+______________________________
+Aidan Funk
+- No submission
+______________________________
+Fabrizio Garcia Castaneda
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+- 1 Day late
+______________________________
+Frederick Habelko
+- No submission
+______________________________
+Collette Haberland
+T2:T3: Perfect
+
+______________________________
+Eugene Hamzezadeh
+T2:T3: Perfect
+* You only needed the empty list base case but you can prove as many base cases as you want
+______________________________
+MacKenzie Haydon
+T2: 
+T3: Perfect
+- Task 2 assumption of n <= n*k not sufficent for proof
+-10
+______________________________
+Taylor Hicken
+- No submission
+______________________________
+Emily Hime
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+- Task 3 inductive step not implemented correctly
+-35
+______________________________
+Kyle Hughes
+T2:T3: Perfect
+* You only needed the empty list base case but you can prove as many base cases as you want
+______________________________
+Ethan Jay
+- No submission
+______________________________
+Adam Jolly
+T2: Base case should be empty list
+- Task 2 base case should be the empty list
+-5
+______________________________
+John Konchar
+T2: Base case incorrect, inductive step incorrect
+T3: Inductive hypothesis incorrect
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+- Weak base case should be the empty list
+- Weak induction is insufficent, should hold for an arbitary list of elements, not elements repeating
+-40
+______________________________
+Cameron Kuan Chung Jinq
+- No submission
+______________________________
+Amanda Lam
+T2:T3: Perfect
+______________________________
+Kieran Lewis
+T2:T3: Perfect
+______________________________
+Lucy Mahorner
+T2:T3: Only hypothesis is correct
+- Task 2 & 3, base case should be empty list
+- Task 2 & 3, Inductive steps insufficent
+-40
+______________________________
+Alejandro Gonzalez
+- No submission
+______________________________
+Brendan McDonnell
+T2:T3: Base case correct
+- Task 2 & 3, induction incorrect, however you pointed this out with a lot of detail of what went wrong. The length of the list is what you induct on, i.e., P(n) where n = len(list), prove P(n+1). The proofs written are structural induction proofs
+-20
+______________________________
+Benjamin Morgan
+T2: perfect
+T3: Hypothesis incorrect
+- Task 3 hypothesis should include that for all lists of len(k), 0 < k < m, P(k) holds
+-5 
+- 1 day late
+______________________________
+Andrew Mueller
+T2:T3: Perfect
+
+______________________________
+Jesus Nunez
+T2: No hypothesis
+T3: Not implemented
+- Weak/Strong induction must include the length of the list as what you induct on
+- Task 3 not implemented
+-37.5
+______________________________
+Caitlin O'Brien
+T2:T3: No hypothesis
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+Justin Orji
+T2: Proof incorrect
+T3: Not implemented
+- Task 2 Inductive step incorrect, we don't say that P(m::k) -> (i + 1) + P(k), we still need to use the definition of the property in our proof
+- Task 3 not implemented
+-40
+______________________________
+Ethan Perry
+T2:T3: Perfect
+______________________________
+Matthew Plumb
+- No submission
+______________________________
+Ian Radley
+T2:T3: Proofs insufficent
+- Task 2 and 3 proofs insufficent, for both proofs it's not shown how max(y) <= sum(y)
+-20
+______________________________
+Elise Renwick
+T2: Proof incomplete
+T3: Proof incomplete
+- Task 2 and 3 proofs were not complete, in task 2 there was no rule for a list with a prepended number
+-25
+______________________________
+Patrick Schassberger
+T2:T3: Proofs incorrect
+- Task 2 and 3 proofs do not show steps that can lead to the conclusion asked for
+- Task 3 Inductive hypothesis should include that 0 < n < n + 1 where P(n) is true, prove P(n+1)
+-30
+______________________________
+Nadia Schreiber
+- No submission
+______________________________
+Chloe Shanahan
+T2: Perfect
+T3: Typos?
+- Task 3 has typos, I believe you mean to say sum(X), max(X) in a few spots, but it's difficult to tell
+-10
+______________________________
+Colin Short
+T2:T3: Proofs incorrect
+- Task 2 & 3 Proofs insufficent to prove the properties
+-20
+______________________________
+Derek Simpson
+- No submission
+______________________________
+Chayada Somrit
+T1: good
+T2:T3:T4: No work done
+-90
+- 2 days late
+______________________________
+Derek Suzumoto
+- No submission
+______________________________
+Jordan Tehranchi
+T2:T3 Perfect
+
+______________________________
+Noah Terry
+T2:T3: Hypothesis missing
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+Brendan Uebelhoer
+T2:T3: Hypothesis missing
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+Luke Valentine
+- No submission
+______________________________
+Erin Visak
+- No submission
+______________________________
+Kayden Von Grosse
+- No submission
+______________________________
+Ryan Wagner
+T2:T3: Hypothesis missing
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+- Task 3 we don't add the k to the list, we say that for 0 < k < n, P(k) holds
+-25
+______________________________
+Luke Wakumoto
+T2:T3: Proofs good
+- Task 3 missing inductive hypothesis that 0 < k < k + 1, P(k) holds
+______________________________
+John Walter
+- No submission
+______________________________
+Nia Williams
+- No submission
+______________________________
+Mehmet Yilmaz
+T1: Good
+T2:T3:T4: Not implemented
+-90
+- 2 days late
+______________________________
+Margaret Zimmerman
+T2:T3: Proofs good
+- Task 2 proof is backwards, we don't want to prove P(n-1), but P(n+1)
+- Task 3 missing inductive hypothesis that 0 < k < n + 1, P(k) holds
+-12.5
+______________________________
+
+*****************
+SEC B
+*****************
+
+Miles Allain
+T2: Base case good
+    Induct good
+T3: Base case good
+    Induct good
+______________________________
+
+Michael Alvarez
+T2: Base case good 
+    Induct good
+T3: Base case good
+    Induct good
+______________________________
+
+Russell Berkley
+- No submission
+
+______________________________
+
+Eli Billinger
+- No submission
+______________________________
+
+Maksym Bondar
+T2: Base case good
+    Induct good
+T3: Base case good
+    Induct good    
+* For Strong induction, only the empty list base case needs to be considered, but you can write as many base cases as you want as well
+
+______________________________
+
+Thomas Boyle
+T2: Base case good
+    Induct good
+T3: Base case good
+    Induct good
+* For Strong induction, only the empty list base case needs to be considered, but you can write as many base cases as you want as well
+
+______________________________
+
+Jack Bramson
+T2: Base Case good
+    Induct not finished
+T3: No work
+-45
+* For weak/strong induction, you were close. After max([n; max(x)]), you can seperate this into 2 cases and prove both, or max(L) = max(n::x) <= n + max(x) <= n + sum(x) = sum(n::x) = sum(L)
+
+______________________________
+
+Briana Brooks
+T2: Base case good
+T3: Base case good
+    - Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+    * The induction proof was good, but you should write out sum(more) >= 0 and end with max(l) = m1 <= m1 + sum(more)
+    -15
+
+______________________________
+
+Connor Brown
+T2: Base case good
+    
+T3: Base case good 
+    - Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+    -15
+
+______________________________
+
+Lauren Champlin
+T2: Base case good
+    Induct good
+T3: Base case good
+    Induct good
+    * There's a typo in your cases for Task 2&3, both are identical
+
+______________________________
+
+Emily Christensen
+- No submission
+
+______________________________
+Emi Clark
+- No submission
+
+______________________________
+Andrew Darling
+T2: Base case good
+T3: Base case good
+    Induct good
+- Task 2: Induction step faulty, in the step with the 'because' statement, you can only use that property on lists with k elements, but you applied it to k + 1 elements, which is what you were trying to prove
+-10
+______________________________
+
+Alek Engstrom
+T2: Base case good
+T3: Base case good
+- Task 2&3: Inductive step faulty, must show what happens when we extend the list by an element
+-30
+______________________________
+
+David Esposito
+T2: Base case good
+T3: Base Case good
+    - In Task 2&3, how do you know max(L') <= sum(L')?
+-10
+______________________________
+
+Ryker Fish
+T2: Base case good
+    Induction perfect
+T3: Base case good
+    Induction good
+______________________________
+
+Sayuri Garud
+T2: No induction or base case
+T3: No work
+-60
+______________________________
+
+Aidan Gray
+- No submissipn
+______________________________
+
+Peter Hall
+T2: Base case good
+T3: Base case good
+    - Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+
+Timothy Hammond
+- No submission
+______________________________
+
+Trevor Hartshorn
+- No submission
+______________________________
+
+Juila Harvey
+T2: Base case good
+T3: Base case good
+    - Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+- 1 day late
+______________________________
+
+Eric Hayes
+T2&T3 Missing
+-60
+- 1 day late
+______________________________
+
+Michael Hessel
+- No submission
+______________________________
+
+Gabe Hohman
+T2 & T3 Missing
+-60
+______________________________
+
+Andrew Hupp
+T2: Perfect
+T3: Perfect
+______________________________
+
+Owen Ingalls
+T2: No induction used
+T3: Structural induction
+- No induction used in weak induction
+- Strong induction used structural induction instead
+-25
+______________________________
+
+Aryaman Jadhav
+- No submission
+______________________________
+
+Yujin Kim
+T2: 
+-Alternative case is inaccurate, normal proof was sufficent though
+T3: 
+- Task 3: Not an inductive proof
+-10
+______________________________
+
+Gregory Labbe
+T2:T3: Perfect
+______________________________
+
+Alexander Langfield
+- No submission
+______________________________
+
+Carson Layne
+T2:T3: Perfect
+______________________________
+
+Zachary Lee
+T2:T3: Perfect
+______________________________
+
+Qianshan Liu
+T2:T3: Perfect
+______________________________
+
+Lauren Loe
+- No submission
+______________________________
+
+Emma Loisel
+T2:T3: 
+- Task 2 we want to prove P(n::x), but here it was used as part of the proof
+- Task 3 is a structural induction case, we need to increment on the length of the list for strong induction
+-15
+______________________________
+
+Noor Malik
+T2:T3: Perfect
+______________________________
+
+Collin McDade
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+
+Zachary McIllece
+T2: Base case right, but not proven
+
+T3: Not implemented
+- Task 2 P(k) should be the property max(k) <= sum(k) to start your proof
+-55
+______________________________
+
+Jonathon McNabb
+- No submission
+______________________________
+
+Colton Meyers
+- No submission
+______________________________
+
+Vincent Morgan
+T2:T3: perfect
+______________________________
+
+Lakin Moser
+- No submission
+______________________________
+
+Caleb Pan
+- No submission
+______________________________
+
+Jaren Peckham
+T2:T3: Perfect
+______________________________
+
+Grace Petryk
+- No submission
+______________________________
+
+Finn Pfeifer
+T2:T3: Both good
+______________________________
+
+Jonathan Popova-jones
+- No submission
+______________________________
+
+Henry Purdum
+T2: 
+- Proofs misworded, "greater than or equal to the max of P(k)" does not make sense since P is a property
+T3: No base case
+-15
+______________________________
+
+Grant Rulon
+T2:T3: Perfect
+______________________________
+
+Ryan Runmana
+T2:T3:
+- Proofs are not generalized for any arbitary list or arbitrary elements
+-15
+______________________________
+
+Kyle sadler
+- No submission
+______________________________
+
+Jared Schneider
+T2:T3:
+-Missing base case of empty list
+-10
+______________________________
+
+Jon Emmanuel Serrano
+T2:T3: Perfect
+- 2 days late
+______________________________
+
+Cady Shock
+T2:T3:
+- Task 2 len(k) is what you induct on, i.e., you want to find how len(k) + 1 changes the property. This requires you to have max(k) and sum(k) in your proof as well.
+-7.5
+______________________________
+
+Jeffrey Sims
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+
+Hunter Sitki
+- No submission
+______________________________
+
+Adam Stogsdill
+T2:T3:
+- Task 3, wrong assumption of what is true, need to say 0 < k < n where P(k) holds
+-5
+______________________________
+
+Jacob Tanchak
+- No submission
+______________________________
+
+Ethan Taylor
+T2:T3:
+- Weak/Strong induction must include the length of the list as what you induct on, these are structural induction proofs
+-15
+______________________________
+
+Andrew Von Bereghy
+- No submission
+______________________________
+
+Preston Walraven
+T2:T3: Perfect
+______________________________
+
+Andrew Yeck
+T2:T3: Perfect
+* For Strong induction, only the empty list base case needs to be considered, but you can write as many base cases as you want as well
+______________________________

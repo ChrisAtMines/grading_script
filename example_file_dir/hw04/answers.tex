@@ -1,0 +1,168 @@
+\documentclass{article}
+% ------------- Packages -------------- %
+\usepackage{amsmath,amsthm,amssymb,
+	fancyhdr}
+\usepackage[17pt]{extsizes}
+\usepackage[width=7in,headheight=87pt,heightrounded]{geometry}
+% ------------- Style ----------------- %
+\geometry{top=5cm, bottom=20mm}
+
+% ------------- Header ---------------- %
+\thispagestyle{fancy}
+\rhead{\Large Jacob Mcbee \\ Programming Languages \\ 10/19/20}
+%\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+%\let\endchangemargin=\endlist 
+
+% ------------- Document -------------- %
+
+\begin{document}
+	For all tasks, $\mathcal{L}$ is the set of all possible lists of numbers \\
+	where $\forall x \in \mathcal{L}$, then for all elements $e$ of $x$, $e \in  \mathbb{N}$ \\ 
+	We let $P(x)$ be the property $max(x) \leq sum(x)$ and choose \\
+	$max(\emptyset) = -\infty, \;sum(\emptyset) = 0$ where $\emptyset$ is the empty list.
+	
+	% ===================================== %
+	\section{Task 1}
+	
+	Must have 2 examples that are not the empty list (the trivial example). 
+	
+	\begin{proof}
+		Let $x = $ 
+		[1; 2; 3]
+		\begin{align*}
+			max(x) &= 3 \\
+			sum(x) &= 6 \\
+			max(x) &\leq sum(x) \\ 
+			P(x) &\text{  holds} 
+		\end{align*}
+	\end{proof}
+	
+	
+	\newpage
+	% ===================================== %
+	
+	\section{Task 2}
+	\begin{proof} 
+		Let $x \in \mathcal{L}$ \\
+		Base Case: 
+		$x = \emptyset$
+		\begin{align*}
+			max(x) &= -\infty \\
+			sum(x) &= 0 \\
+			max(x) &\leq sum(x) \\ 
+			P(x) &\text{  holds} 
+		\end{align*}
+		\noindent Inductive Step:
+		Let $x \in \mathcal{L}, e \in \mathbb{N}$ where $e$ is a new element to be added to $x$ and assume $P(x)$ holds. $len(x)$ is the length of a list $x$. We want to prove $P(e::x)$
+		
+		\begin{align*}
+			len(e::x) &= len(x) + 1 \\
+			max(e::x) &= max(max(x), e) \\
+			sum(e::x) &= sum(x) + e \\
+			P(e::x)&= \\
+			max(e::x) &\leq sum(e::x) \\
+			len(e::x) \cdot max(e::x) &\leq len(e::x) \cdot sum(e::x) \\
+			max(e::x)\cdot len(e::x) &= max(e::x) \cdot len(x) + max(e::x) \\
+			&= (len(x) + 1)\cdot (max(max(x),e)) \\
+			& \\
+			sum(e::x) \cdot len(e::x) &= (len(x) + 1 ) \cdot (sum(x) + e) \\
+			&= len(x)sum(x) + sum(x) + len(x)e + e \\
+			(len(x) + 1)\cdot (max(max(x),e)) &\leq len(x)sum(x) + sum(x) + len(x)e + e
+		\end{align*}
+		\newpage
+		$max(max(x),e))$ Will either be $max(x)$ or $e$, so we prove both.
+		
+		\begin{align*}
+			&max(x) \\
+			len(x)\cdot max(x) + max(x) &\leq len(x) \cdot sum(x) + sum(x) + len(x) \cdot e + e \\
+			(len(x) + 1)max(x) &\leq (len(x) + 1)sum(x) + len(x) \cdot e + e  \\
+			max(x) &\leq sum(x) + \frac{len(x) \cdot e + e}{len(x) + 1}
+		\end{align*}
+		
+		\begin{align*}
+			&e \\
+			len(x)\cdot e + e &\leq len(x) \cdot sum(x) + sum(x) + len(x) \cdot e + e \\
+			0 &\leq len(x) \cdot sum(x) + sum(x)
+		\end{align*}
+	\end{proof}
+	\newpage
+	
+	\section{Task 3}
+	\begin{proof} 
+		Let $x \in \mathcal{L}$ \\
+		Base Case: 
+		$x = \emptyset$
+		\begin{align*}
+			max(x) &= -\infty \\
+			sum(x) &= 0 \\
+			max(x) &\leq sum(x) \\ 
+			P(x) &\text{  holds} 
+		\end{align*}
+		\noindent Inductive Step:
+		Let $x \in \mathcal{L}, e \in \mathbb{N}$ where $e$ is a new element to be added to $x$ and assume $P(x)$ holds for all lists shorter than $e::x$. $len(x)$ is the length of a list $x$. We want to prove $P(e::x)$
+		
+		\begin{align*}
+			len(e::x) &= len(x) + 1 \\
+			max(e::x) &= max(max(x), e) \\
+			sum(e::x) &= sum(x) + e \\
+			P(e::x)& \\
+			max(e::x) &\leq sum(e::x) \\
+			len(e::x) \cdot max(e::x) &\leq len(e::x) \cdot sum(e::x) \\
+			max(e::x)\cdot len(e::x) &= max(e::x) \cdot len(x) + max(e::x) \\
+			&= (len(x) + 1)\cdot (max(max(x),e)) \\
+			& \\
+			sum(e::x) \cdot len(e::x) &= (len(x) + 1 ) \cdot (sum(x) + e) \\
+			&= len(x)sum(x) + sum(x) + len(x)e + e \\
+			(len(x) + 1)\cdot (max(max(x),e)) &\leq len(x)sum(x) + sum(x) + len(x)e + e
+		\end{align*}
+		$max(max(x),e))$ Will either be $max(x)$ or $e$, so we prove both.
+		
+		\begin{align*}
+			&max(x) \\
+			len(x)\cdot max(x) + max(x) &\leq len(x) \cdot sum(x) + sum(x) + len(x) \cdot e + e \\
+			(len(x) + 1)max(x) &\leq (len(x) + 1)sum(x) + len(x) \cdot e + e  \\
+			max(x) &\leq sum(x) + \frac{len(x) \cdot e + e}{len(x) + 1}
+		\end{align*}
+		
+		\begin{align*}
+			&e \\
+			len(x)\cdot e + e &\leq len(x) \cdot sum(x) + sum(x) + len(x) \cdot e + e \\
+			0 &\leq len(x) \cdot sum(x) + sum(x)
+		\end{align*}
+	\end{proof}
+	% ===================================== %
+	
+	\newpage
+	\section{Task 4}
+	\begin{proof}
+		Let $x \in \mathcal{L}$ \\
+		Base Case: 
+		$x = \emptyset$
+		\begin{align*}
+			max(x) &= -\infty \\
+			sum(x) &= 0 \\
+			max(x) &\leq sum(x) \\ 
+			P(x) &\text{  holds} 
+		\end{align*}
+		\noindent Inductive Step:
+		Let $x \in \mathcal{L}, e \in \mathbb{N}$ where $e$ is a new element to be added to $x$ and assume $P(x)$ holds. We want to prove $P(e::x)$
+		
+		\begin{align*}
+			&P(e::x) = \\
+			max(e::x) &\leq sum(e::x) \\
+			max(max(x), e) &\leq sum(x) + e
+		\end{align*}
+		$max(max(x),e))$ Will either be $max(x)$ or $e$, so we prove both.
+		
+		\begin{align*}
+			&max(x) \\
+			max(x) &\leq sum(x) + e
+		\end{align*}
+		
+		\begin{align*}
+			&e \\
+			e &\leq sum(x) + e \\
+			0 &\leq sum(x)
+		\end{align*}
+	\end{proof}
+\end{document}
