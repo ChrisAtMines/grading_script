@@ -52,7 +52,9 @@ do
 		echo "Appending Instructor Tests"
 		cp $ASSIGNMENT.ml old_$ASSIGNMENT.ml
 		cat ../../../$RSCDIR/$ASSIGNMENT/instr_tests.ml >> $ASSIGNMENT.ml
-		make $ASSIGNMENT
+		pri=$(make $ASSIGNMENT | tee /dev/tty | cat | grep -c "\--------------")
+		[[ $pri -eq 4 ]] && p="-0 pts" || p="-5 pts"
+		echo "Print satement works properly      $p"
 
 		echo "Restoring Original main.ml"
 		rm main.ml
