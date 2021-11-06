@@ -18,6 +18,7 @@ let my_really_read_string in_chan =
     in
     loop ()
 
+
 let get_channel i =
   let i = (match i with
   | Some(i) -> Printf.printf "reading from file...\n"; i
@@ -53,12 +54,45 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
     let _ = list_check Lab03.cond_eval_tests in
     let _ = list_check Lab03.str_eval_tests in
     let _ = list_check Lab03.var_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+  let (instr_, instr_pif_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab03) ->
+    reset_test_counts ();
     let _ = list_check Lab03.instr_eval_print_if_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+  let (instr_, instr_str_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab03) ->
+    reset_test_counts ();
     let _ = list_check Lab03.instr_eval_strings in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+  let (instr_, instr_const_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab03) ->
+    reset_test_counts ();
     let _ = list_check Lab03.instr_eval_const in
     get_test_counts acc
   ) (0,0) !Flags.mode) in
-  let _ = Printf.printf "total = %d; failed = %d\n" total failed in
+  let _ = Printf.printf "\ntotal = %d; failed = %d             -%d pts\n" total failed (match 5*failed > 15 with 
+  | true -> 15
+  | false -> failed*5
+  ) in
+  let _ = Printf.printf "Instr Print/if tests failed = %d    -%d pts\n" instr_pif_failed (instr_pif_failed*5) in
+  let _ = Printf.printf "Instr String tests failed = %d      -%d pts\n" instr_str_failed  (instr_str_failed*5) in 
+  let _ = Printf.printf "Instr Const tests failed = %d       -%d pts\n" instr_const_failed  (instr_const_failed*5) in
   if failed > 0 then 1 else 0 (* exit status *)
 ) else if !Flags.test then (
   let input_str = get_input_str i in
