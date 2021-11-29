@@ -48,6 +48,42 @@ let instr_func_eval_tests = ("Instructor Function Definition Evaluation", (fun p
       None
     )))
   ); 
+  (Some("No args"), parse_string "function f(x) { return x === 1 }",
+    Ok(ClosureVal(StringMap.empty, (
+      Some("f"),
+      [("x", None)],
+      ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos,"x"), EqBop, ValExpr(NoPos, NumVal(1.0)))), 
+      None
+    )))
+  ); 
+  (Some("Dec"), parse_string "function dec(x) { return x > 0 ? x + dec(x-1) : 0 }",
+    Ok(ClosureVal(StringMap.empty, (
+      Some("dec"),
+      [("x", None)],
+      ReturnBlock(NoPos, 
+        IfExpr(NoPos, 
+          BopExpr(NoPos,
+            VarExpr(NoPos, "x"), 
+            GtBop, 
+            ValExpr(NoPos, NumVal(0.0))
+            ), 
+          BopExpr(NoPos, 
+            VarExpr(NoPos,"x"), 
+            PlusBop, 
+            CallExpr(NoPos, 
+              VarExpr(NoPos, "dec"), 
+              [BopExpr(NoPos, 
+                VarExpr(NoPos,"x"), 
+                MinusBop, 
+                ValExpr(NoPos,NumVal(1.0))
+              )]
+            )
+          ), 
+          ValExpr(NoPos, NumVal(0.0))
+        )), 
+      None
+    )))
+  ); 
 ])
 
 (* Call Test *)
@@ -59,6 +95,7 @@ let instr_call_eval_tests = ("Instructor Simple Call Evaluation", (fun p -> eval
   (Some("Scope 2"), parse_string "const f = function(x){const y = 1; return x+y}; f(2)",    Ok(NumVal(3.0)));
   (Some("No Args"), parse_string "const f = function(x){return 1}; f(x)",                     Ok(NumVal(1.0)));
   (Some("recursion"), parse_string "const f = function t(x){return x===0 ? 0 : x+t(x-1)}; f(5)", Ok(NumVal(15.0)));
+  (Some("recursion2"), parse_string "(function dec(x){return x > 0 ? x + dec(x-1) : 0 })(6)", Ok(NumVal(21.0)));
 ])
 
 
