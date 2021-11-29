@@ -77,10 +77,10 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
   ) (0,0) !Flags.mode) in
 
   if total_func < 2 
-  then Printf.printf "Func Eval missing tests = %d    -%d pts\n" total_func (10 - total_func*5);
+  then Printf.printf "Func Eval missing tests = %d    -%d pts\n" (2 - total_func) (10 - total_func*5);
   let _ = Printf.printf "Studt Func Eval failed  = %d    -%d pts\n" func_failed (func_failed*5) in
   if total_eval < 5
-  then Printf.printf "Call Eval missing tests = %d    -%d pts\n" total_eval (10 - total_eval*2); 
+  then Printf.printf "Call Eval missing tests = %d    -%d pts\n" (5 - total_eval) (10 - total_eval*2); 
   let _ = Printf.printf "Studt Call Eval failed  = %d    -%d pts\n" call_failed (call_failed*2) in
   
   let _ = Printf.printf "Instr Func Eval failed  = %d    -%d pts\n" instr_func_eval_failed (instr_func_eval_failed*5) in
