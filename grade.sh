@@ -60,9 +60,7 @@ do
 			echo "Appending Instructor Tests"
 			cp $ASSIGNMENT.ml old_$ASSIGNMENT.ml
 			cat ../../../$RSCDIR/$ASSIGNMENT/instr_tests.ml >> $ASSIGNMENT.ml
-			pri=$(make $ASSIGNMENT | tee /dev/tty | cat | grep -c "function fun(x)")
-			[[ $pri -eq 1 ]] && p="-0 pts" || p="-5 pts"
-			echo "Print satement works properly      $p"
+			make $ASSIGNMENT
 
 			echo "Restoring Original main.ml"
 			rm main.ml
@@ -73,7 +71,7 @@ do
 			rm $ASSIGNMENT.ml
 			cp old_$ASSIGNMENT.ml $ASSIGNMENT.ml
 			rm old_$ASSIGNMENT.ml
-			nvim $ASSIGNMENT.ml
+			#nvim $ASSIGNMENT.ml
 		else
 			make $ASSIGNMENT
 			make fib

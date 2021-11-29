@@ -36,20 +36,57 @@ let _ =
 let i = parse_command_line () in 
 (* run unit tests *)
 let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
-  let (total,failed) = 
+  let (total_func,func_failed) = 
   (List.fold_left (fun acc mode ->
   Printf.printf "running %s tests...\n" (get_assignment_desc mode);
   match mode with
   | (Lab04) ->
     reset_test_counts ();
     let _ = list_check Lab04.func_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+  let (total_eval,call_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab04) ->
+    reset_test_counts ();
     let _ = list_check Lab04.call_eval_tests in
-    let _ = list_check Lab04.instr_call_eval_tests in 
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+  let (instr_,instr_func_eval_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab04) ->
+    reset_test_counts ();
     let _ = list_check Lab04.instr_func_eval_tests in
     get_test_counts acc
   ) (0,0) !Flags.mode) in
-  let _ = Printf.printf "total = %d; failed = %d\n" total failed in
-  if failed > 0 then 1 else 0 (* exit status *)
+
+  let (instr_,instr_call_eval_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab04) ->
+    reset_test_counts ();
+    let _ = list_check Lab04.instr_call_eval_tests in 
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+  if total_func < 2 
+  then Printf.printf "Func Eval missing tests = %d    -%d pts\n" total_func (10 - total_func*5);
+  let _ = Printf.printf "Studt Func Eval failed  = %d    -%d pts\n" func_failed (func_failed*5) in
+  if total_eval < 5
+  then Printf.printf "Call Eval missing tests = %d    -%d pts\n" total_eval (10 - total_eval*2); 
+  let _ = Printf.printf "Studt Call Eval failed  = %d    -%d pts\n" call_failed (call_failed*2) in
+  
+  let _ = Printf.printf "Instr Func Eval failed  = %d    -%d pts\n" instr_func_eval_failed (instr_func_eval_failed*5) in
+  let _ = Printf.printf "Instr Call Eval failed  = %d    -%d pts\n" instr_call_eval_failed  (instr_call_eval_failed*5) in 
+
+  if func_failed > 0 then 1 else 0 (* exit status *)
 ) else if !Flags.test then (
   let input_str = get_input_str i in
   (*Printf.printf "input_str = %s\n" input_str;*)
