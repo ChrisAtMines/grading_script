@@ -44,7 +44,7 @@ do
     STUDENT_NAME_LAST=$(jq -r .[$i].name_last $ROSTER)
 
     STUDENT_NAME=${STUDENT_NAME_FIRST// /_}_${STUDENT_NAME_LAST// /_}
-    GIT_URL="https://github.com/mines-csci400/f21${SECTION}-user-${GIT_REPO_USER}-${ASSIGNMENT}"
+    GIT_URL="git@github.com:mines-csci400/f21${SECTION}-user-${GIT_REPO_USER}-${ASSIGNMENT}"
     CLONE_DIR="sec_$SECTION/${STUDENT_NAME}/${ASSIGNMENT}"
     echo "Grabbing $STUDENT_NAME_FIRST $STUDENT_NAME_LAST"
     if [ "$PULL" = true ]
