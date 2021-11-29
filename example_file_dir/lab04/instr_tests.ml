@@ -93,7 +93,7 @@ let instr_call_eval_tests = ("Instructor Simple Call Evaluation", (fun p -> eval
   (Some("2 Args"), parse_string "const y = 1; const f = function(x){return x+y}; f(2)",            Ok(NumVal(3.0)));
   (Some("Scope 1"), parse_string "const y = 1; const f = function(x){return x+y}; f(2)",    Ok(NumVal(3.0)));
   (Some("Scope 2"), parse_string "const f = function(x){const y = 1; return x+y}; f(2)",    Ok(NumVal(3.0)));
-  (Some("No Args"), parse_string "const f = function(x){return 1}; f(x)",                     Ok(NumVal(1.0)));
+  (Some("No Args"), parse_string "const f = function(x){return 1}; f(1)",                     Ok(NumVal(1.0)));
   (Some("recursion"), parse_string "const f = function t(x){return x===0 ? 0 : x+t(x-1)}; f(5)", Ok(NumVal(15.0)));
   (Some("recursion2"), parse_string "(function dec(x){return x > 0 ? x + dec(x-1) : 0 })(6)", Ok(NumVal(21.0)));
 ])
