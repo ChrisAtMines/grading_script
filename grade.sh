@@ -5,11 +5,12 @@ NC='\033[0m'
 
 SECTION_SKIP=false
 INSTRUCTOR_TESTS=true
-DUE_DATE_UNIX=$(date -d 2021-11-11 +%s)
-DUE_DATE=$(date -d 2021-11-11 +"%a %b %d %H:%R")
+DUE_DATE_UNIX=$(date -d 2021-12-04 +%s)
+DUE_DATE=$(date -d 2021-12-04 +"%a %b %d %H:%R")
 
 ASSIGNMENT=$1
 if [ -z "$2" ]
+~
 then
 	RSCDIR=.config
 else
