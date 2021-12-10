@@ -45,13 +45,86 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
     let _ = list_check Lab05.simple_expr_eval_tests in
     let _ = list_check Lab05.simple_func_eval_tests in
     let _ = list_check Lab05.simple_call_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+(* student tests *)
+  let (total_expr,expr_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab05) ->
+    reset_test_counts ();
     let _ = list_check Lab05.expr_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+  let (total_func,func_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab05) ->
+    reset_test_counts ();
     let _ = list_check Lab05.func_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+  let (total_call,call_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab05) ->
+    reset_test_counts ();
     let _ = list_check Lab05.call_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+(* instr tests *)
+  let (_,instr_expr_eval_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab05) ->
+    reset_test_counts ();
+    let _ = list_check Lab05.instr_expr_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+  
+  let (_,instr_func_eval_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab05) ->
+    reset_test_counts ();
     let _ = list_check Lab05.instr_func_eval_tests in
     get_test_counts acc
   ) (0,0) !Flags.mode) in
+
+  let (_,instr_call_eval_failed) = 
+  (List.fold_left (fun acc mode ->
+  Printf.printf "running %s tests...\n" (get_assignment_desc mode);
+  match mode with
+  | (Lab05) ->
+    reset_test_counts ();
+    let _ = list_check Lab05.instr_call_eval_tests in
+    get_test_counts acc
+  ) (0,0) !Flags.mode) in
+
+
   let _ = Printf.printf "total = %d; failed = %d\n" total failed in
+  
+  if total_expr < 3 
+  then Printf.printf "Func Eval missing tests = %d    -%d pts\n" (2 - total_expr) (5 - total_expr*2);
+  let _ = Printf.printf "Studt Func Eval failed  = %d    -%d pts\n" expr_failed (expr_failed*2) in
+  if total_func < 2 
+  then Printf.printf "Func Eval missing tests = %d    -%d pts\n" (2 - total_func) (5 - total_func*2);
+  let _ = Printf.printf "Studt Func Eval failed  = %d    -%d pts\n" func_failed (func_failed*2) in
+  if total_call < 5
+  then Printf.printf "Call Eval missing tests = %d    -%d pts\n" (5 - total_call) (5 - total_call); 
+  let _ = Printf.printf "Studt Call Eval failed  = %d    -%d pts\n" call_failed (call_failed) in
+
+  let _ = Printf.printf "Instr Expr Eval failed  = %d    -%d pts\n" instr_expr_eval_failed  (instr_expr_eval_failed*5) in 
+  let _ = Printf.printf "Instr Func Eval failed  = %d    -%d pts\n" instr_func_eval_failed (instr_func_eval_failed*5) in
+  let _ = Printf.printf "Instr Call Eval failed  = %d    -%d pts\n" instr_call_eval_failed  (instr_call_eval_failed*5) in 
+
   if failed > 0 then 1 else 0 (* exit status *)
 ) else if !Flags.test then (
   let input_str = get_input_str i in
@@ -93,7 +166,7 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
     let result = (match mode with
     | (Lab05) ->
       let input_ast = parse_string input_str in
-      Printf.printf "parsed input: %s\n" (Javascript_ast.str_program input_ast);
+      Printf.printf "parse input: %s\n" (Javascript_ast.str_program input_ast);
       let (final_env,v) = Lab05.eval (empty_env,input_ast) in
       let v_num = to_num v in
       let v_bool = to_bool v in
@@ -107,3 +180,4 @@ let exit_status = if !Flags.test && List.length !Flags.mode > 0 then (
   0 (* exit status *)
 ) in
 exit exit_status
+

@@ -11,34 +11,68 @@ let instr_expr_eval_tests = ("Instr Simple Expression Evaluation", (fun p -> snd
 ])
 
 let instr_func_eval_tests = ("Instr Function Definition Evaluation", (fun p -> snd (eval (empty_env,p))), eq_value, eq_exn, Some(str_program,str_value), [ 
-    (None, parse_string "function(x){ return x+1 }", Ok(ClosureVal(
-            (StringMap.empty),
-            (None,
-            [("x", None)],
-            ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos, "x"), PlusBop, ValExpr(NoPos, NumVal(1.0)))),
-            None)
-    )));
-    (None, parse_string "function f(x){ return x+1 }", Ok(ClosureVal(
-            (StringMap.empty),
-            (Some("f"),
-            [("x", None)],
-            ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos, "x"), PlusBop, ValExpr(NoPos, NumVal(1.0)))),
-            None)
-    )));
-    (None, parse_string "const y = 1; function(x){ return x+1 }", Ok(ClosureVal(
-            (StringMap.add "y" 1 StringMap.empty),
-            (None,
-            [("x", None)],
-            ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos, "x"), PlusBop, ValExpr(NoPos, NumVal(1.0)))),
-            None)
-    )));
-    (None, parse_string "const y = 1; const z = 2; function(x){ return x+1 }", Ok(ClosureVal(
-            (StringMap.add "z" 2 (StringMap.add "y" 1 StringMap.empty)),
-            (None,
-            [("x", None)],
-            ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos, "x"), PlusBop, ValExpr(NoPos, NumVal(1.0)))),
-            None)
-    )));
+  (Some("Closure Val"), parse_string "function f(x){ return x } ",
+    Ok(ClosureVal(StringMap.empty, (
+      Some("f"),
+      [("x", None)], 
+      ReturnBlock(NoPos, VarExpr(NoPos, "x")),
+      None
+    )))
+  );
+  (Some("Statement Block"), parse_string "function f(x){const z = 1; return z + x}",
+    Ok(ClosureVal(StringMap.empty, (
+      Some("f"),
+      [("x", None)],
+      StmtBlock(NoPos, ConstStmt(NoPos, "z", ValExpr(NoPos, NumVal(1.0))),
+        ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos, "z"), PlusBop, VarExpr(NoPos, "x")))
+      ),
+      None
+    )))
+  );
+  (Some("No name"), parse_string "function (x) { return x }",
+    Ok(ClosureVal(StringMap.empty, (
+      None,
+      [("x", None)],
+      ReturnBlock(NoPos, VarExpr(NoPos, "x")), 
+      None
+    )))
+  ); 
+  (Some("No args"), parse_string "function f(x) { return x === 1 }",
+    Ok(ClosureVal(StringMap.empty, (
+      Some("f"),
+      [("x", None)],
+      ReturnBlock(NoPos, BopExpr(NoPos, VarExpr(NoPos,"x"), EqBop, ValExpr(NoPos, NumVal(1.0)))), 
+      None
+    )))
+  ); 
+  (Some("Dec"), parse_string "function dec(x) { return x > 0 ? x + dec(x-1) : 0 }",
+    Ok(ClosureVal(StringMap.empty, (
+      Some("dec"),
+      [("x", None)],
+      ReturnBlock(NoPos, 
+        IfExpr(NoPos, 
+          BopExpr(NoPos,
+            VarExpr(NoPos, "x"), 
+            GtBop, 
+            ValExpr(NoPos, NumVal(0.0))
+            ), 
+          BopExpr(NoPos, 
+            VarExpr(NoPos,"x"), 
+            PlusBop, 
+            CallExpr(NoPos, 
+              VarExpr(NoPos, "dec"), 
+              [BopExpr(NoPos, 
+                VarExpr(NoPos,"x"), 
+                MinusBop, 
+                ValExpr(NoPos,NumVal(1.0))
+              )]
+            )
+          ), 
+          ValExpr(NoPos, NumVal(0.0))
+        )), 
+      None
+    )))
+  ); 
 ])
 
 let instr_call_eval_tests = ("Instr Call Evaluation", (fun p -> snd (eval (empty_env,p))), eq_value, eq_exn, Some(str_program,str_value), [
