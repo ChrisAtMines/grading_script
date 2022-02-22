@@ -2,10 +2,9 @@
 
 ASSIGNMENT=${@: -1}
 
-while getopts 'r:s:p' flag; do
+while getopts 'r:p' flag; do
     case "${flag}" in
-        r) ROSTER=${OPTARG} ;;
-        s) SECTION_ARG=${OPTARG} ;;
+        r) ROSTER=${OPTARG} ;; 
         p) PULL=true ;;
     esac
 done
@@ -15,46 +14,30 @@ then
     ROSTER=roster.json
 fi
 
-if [ -n "$SECTION_ARG" ]
-then
-    if [ $SECTION_ARG == "a" ]
-    then
-        jq '[.[] | select(.section == "a")]' roster.json > temp.json
-    else
-        jq '[.[] | select(.section == "b")]' roster.json > temp.json
-    fi
-    ROSTER=temp.json
-    echo "Getting section $SECTION_ARG"
-fi
-
 
 NUM_STUDENTS=$(jq length $ROSTER)
 
 for (( i=0; i<$NUM_STUDENTS; i++ ))
 do
-    if [ -z "$SECTION_ARG" ]
-    then
-        SECTION=$(jq -r .[$i].section $ROSTER)
-    else
-        SECTION=$SECTION_ARG
-    fi
-    
-    GIT_REPO_USER=$(jq -r .[$i].univ_username $ROSTER)
-    STUDENT_NAME_FIRST=$(jq -r .[$i].name_first $ROSTER)
-    STUDENT_NAME_LAST=$(jq -r .[$i].name_last $ROSTER)
+#    SECTION=$(jq -r .[$i].section $ROSTER)
+#   GIT_REPO_USER=$(jq -r .[$i].univ_username $ROSTER)
+#   STUDENT_NAME_FIRST=$(jq -r .[$i].name_first $ROSTER)
+#   STUDENT_NAME_LAST=$(jq -r .[$i].name_last $ROSTER)
 
-    STUDENT_NAME=${STUDENT_NAME_FIRST// /_}_${STUDENT_NAME_LAST// /_}
-    GIT_URL="git@github.com:mines-csci400/f21${SECTION}-user-${GIT_REPO_USER}-${ASSIGNMENT}"
-    CLONE_DIR="sec_$SECTION/${STUDENT_NAME}/${ASSIGNMENT}"
-    echo "Grabbing $STUDENT_NAME_FIRST $STUDENT_NAME_LAST"
+    TEAM_NAME=$(jq -r .[$i].team_name $ROSTER)
+    GIT_URL="git@github.com:mines-csci400/s22-team-${TEAM_NAME}"
+    CLONE_DIR="repos/${TEAM_NAME}"
+    echo "Grabbing $TEAM_NAME"
     if [ "$PULL" = true ]
     then
         cd $CLONE_DIR
+	echo cleaning
+	make clean
         echo pulling
         git pull 
-        cd ../../..
+        cd ../../
     else
-        git clone $GIT_URL $CLONE_DIR
+        git clone $GIT_URL $CLONE_DIR -f
     fi
 done
 
